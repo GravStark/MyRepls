@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<!--
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤⠞⣋⠉⣿⣯⣿⢿⣖⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠿⣶⣾⣿⣾⣿⣹⣿⣶⣿⣿⣾⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣧⣰⣿⣿⣿⣿⣿⣿⡿⠿⠿⣿⣿⡟⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠟⣠⣿⠟⠋⠉⠀⠈⠀⠀⠀⠀⠘⣿⣧⢣⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⠀⠀⠀⢀⡀⠀⠀⣀⡀⠀⣾⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⡏⠀⢻⣯⡽⢿⡄⠘⢿⡯⠵⢻⣟⡋⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠼⣧⠀⠉⠀⠀⠀⠁⠀⠀⠀⠀⢨⣿⢳⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢌⢧⣬⠇⠀⠀⠀⠸⠛⠂⠘⠆⢎⡴⣻⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠉⣿⡆⠀⠀⢾⣯⢿⣗⣀⣼⣹⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠸⡟⠀⠀⠀⠟⢲⣶⠶⣿⠍⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠰⡇⠀⠀⠀⠴⢺⣿⣤⢿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⣾⣿⣿⣿⡆⢧⡀⠀⢀⣀⣼⣿⣟⡇⢿⣷⣶⣤⣄⣀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣀⣴⣶⣿⣿⣿⣿⣿⣿⣿⣷⠀⠳⣄⠀⠉⢿⣿⣿⠇⠸⣿⣿⣿⣿⣿⣿⣷⣦⣄⡀⠀
+⠀⢀⣤⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡷⠆⠙⢦⣀⣨⠗⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠀
+⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣀⣠⣤⣀⣉⠀⠀⡀⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆
+⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢁⣼⠿⢿⣿⣿⣿⠲⠶⠶⠯⢤⣠⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇
+⠀⡿⣿⣿⣿⣿⣿⣿⣿⡟⣰⢹⣁⡀⠈⠙⣻⣿⣍⣉⣙⣒⣻⠓⢾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏
+⠀⣷⣾⣿⣿⣿⣿⣿⣿⠁⡇⠀⠉⡀⠙⢿⣿⣿⡧⠤⠤⠭⠭⣌⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+⢀⣿⣿⣿⣿⣿⣿⣿⣿⡟⠁⠀⠀⣇⣤⣾⣿⣿⣗⠒⠒⠲⣶⠦⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇
+	       
+	       https://youtu.be/dQw4w9WgXcQ
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <title>Artificialis Intelligentia</title>
+
+  <meta name="description"
+    content="Un sito sull'intelligenza artificiale, le sue applicazioni e le controversie attuali dell'IA">
+  <meta name="keywords" content="IA, AI, Intelligenza artificiale">
+
+  <meta property="og:title" content="Artificialis Intelligentia" />
+  <meta property="og:url" content="https://progettoAI.gravinadavide.repl.co/" />
+  <meta property="og:image" content="images/site-preview.png" />
+
+  <!--<base href="" target="_blank" />-->
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="#home"><img class="logo" src="images/logo3.png" alt="site logo"></a>
+      <ul class="menu">
+        <li><a href="#section2">Introduzione</a></li>
+        <li><a href="#section3">Applicazioni</a></li>
+        <li><a href="#section4">Problemi</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="home" id="home">
+    <div class="mainSection">
+      <div class="mainTextContainer" lang="it">
+        <h1>Intelligenza artificiale</h1>
+        <p>
+          L'intelligenza artificiale (spesso abbreviato in IA o AI) è la capacità di un computer o di una macchina di
+          eseguire attività che normalmente richiedono l'intelligenza umana, come l'apprendimento, la risoluzione di
+          problemi e il processo decisionale.
+        </p>
+      </div>
+      <img class="spaceships" src="images/astronavi2.png">
+    </div>
+  </section>
+  <!-- Scroll down arrow da https://codepen.io/iftikharrasha/pen/eYJKGGa -->
+  <a href="#section2">
+    <div class="box">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </a>
+  <main>
+    <article>
+      <section class="section2" id="section2">
+        <h2>Introduzione</h2>
+        <p>
+          <strong>L'intelligenza artificiale</strong> è una branca dell'informatica che si occupa di creare algoritmi
+          e sistemi in grado di svolgere compiti che richiedono intelligenza umana, come il riconoscimento
+          del linguaggio, la percezione visiva e la risoluzione di problemi. Ci sono diversi metodi
+          utilizzati per creare sistemi di intelligenza artificiale, tra cui l'apprendimento automatico,
+          la programmazione esplicita e la programmazione evolutiva.
+        </p>
+
+        <h3>Tipi di intelligenza artificiale</h3>
+        <p>Esistono principalmente due tipi di IA:</p>
+        <div class="row">
+          <div class="column compareBox">
+            <p><b>Intelligenza artificiale stretta (ANI)</b>, ovvero progettata per eseguire un compito
+              specifico e determinato.</p>
+          </div>
+          <div class="column compareBox">
+            <p><b>Intelligenza artificiale generale (AGI)</b>, ovvero in grado di eseguire qualsiasi attività
+              intellettuale che un essere umano può eseguire.</p>
+          </div>
+        </div>
+        <p>L'intelligenza artificiale, inoltre, presenta due <em>sottocampi</em> molto importanti:</p>
+        <figure>
+          <img class="standardImage"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/AI_hierarchy.svg/1024px-AI_hierarchy.svg.png"
+            alt="sottocampi IA" style="height: 450px;">
+          <figcaption>Sottocampi dell'intelligenza artificiale. Da <a
+              href="https://en.wikipedia.org/wiki/Machine_learning#/media/File:AI_hierarchy.svg">Wikipedia</a>, licenza
+            CC BY-SA 4.0</figcaption>
+        </figure>
+        <p>
+          Il <strong>deep learning</strong> in particolare utilizza delle <strong>reti neurali</strong> per simulare una
+          pseudo-intelligenza umana. Tra le più comuni applicazioni delle reti neurali c'è l'identificazione e il
+          riconoscimento del testo eseguendo un processo chiamato OCR (Optical Charatter Reognition).<br>
+          Di seguito un esempio interattivo:
+        </p>
+
+        <form action="https://www.3blue1brown.com/lessons/neural-networks" target="_blank">
+          <button class="button2" role="button"">OCR Neural Network</button>
+        </form>
+        <br>
+      </section>
+
+      <section class=" section3" id="section3">
+            <h2>Le applicazioni dell'IA</h2>
+            <p>
+              L'IA viene utilizzata in molti aspetti della vita quotidiana e non solo.
+              Le applicazioni IA includono motori di ricerca web avanzati (Google), algoritmi di raccomandazione
+              (utilizzati da YouTube, Facebook, Amazon, Netflix...), comprensione del linguaggio umano (come Siri e
+              Alexa),
+              auto a guida autonoma (Tesla) e molto altro.
+              Inoltre, l'IA sta diventando sempre più importante
+              in molti campi, come la <strong>medicina</strong>, la <strong>finanza</strong> e la <strong>produzione
+                industriale</strong>,
+              per aiutare a prendere decisioni più informate e automatizzare i compiti ripetitivi.
+            </p>
+            <img class="standardImage" src="images/big-tech-companies.jpg" alt="big tech companies logos">
+
+            <h4>Algoritmi di raccomandazione</h4>
+            <p>
+              Gli algoritmi di raccomandazione (<strong>AI recommendation systems</strong>) rappresentano una categoria
+              di algoritmi di machine learning usati per <strong>prevedere</strong> le scelte degli utenti e offrire
+              loro
+              consigli mirati. Questi sistemi, osservando e registrando le scelte fatte dal singolo utente, presentano
+              contenuti e suggerimenti che gli potrebbero piacere e che permettono di rendere l’esperienza molto più
+              <strong>intuitiva</strong> e <strong>immediata</strong>. Per prima cosa, gli algoritmi raccolgono i dati
+              rilevanti, usando una serie di
+              metodi come il monitoraggio delle ricerche dell’utente e del suo comportamento online e l’<strong>analisi
+                degli
+                interessi</strong> dell'utente. YouTube, Facebook, Netflix e Amazon hanno saputo creare nel tempo un
+              sistema di
+              raccomandazione quasi perfetto in grado di proporci quello che più desideriamo e farci stare più tempo
+              sulla piattaforma.
+            </p>
+            <!--questo commento rimarrà qui fino al giorno della presentazione https://www.youtube.com/watch?v=dQw4w9WgXcQ lol ho notato no mi hai rubato l'idea-->
+            <!--scommetto che ci dimenticheremo di toglierlo -->
+            <h4>Auto a guida autonoma</h4>
+            <p>
+              <a href="https://www.tesla.com/" target="_blank"><img class="sideImage" src="/images/tesla-logo.png"
+                  alt="Tesla logo"></a>
+              L'utilizzo dell'Intelligenza Artificiale (IA) nelle auto a guida autonoma è uno dei campi di
+              applicazione più promettenti dell'IA.
+              L'IA consente alle auto a guida autonoma di comprendere il loro ambiente circostante, utilizzando
+              sensori come fotocamere, radar e
+              lidar per raccogliere dati sulla posizione degli oggetti e sulle condizioni della strada. Per qualificarsi
+              come <strong>completamente autonomo</strong>, un veicolo
+              deve essere in grado di navigare senza intervento umano verso una destinazione predeterminata su strade
+              che non sono state adattate per il suo utilizzo.
+              Gli algoritmi di apprendimento automatico vengono utilizzati per analizzare questi dati e prendere
+              decisioni su come la vettura deve comportarsi
+              in base alle condizioni del traffico e alle leggi della guida. Ciò include la capacità di rilevare gli
+              ostacoli e di evitarli, di
+              seguire le segnaletiche stradali e di rispettare i limiti di velocità. L'IA consente anche alle auto a
+              guida autonoma di comunicare con altre auto e con la rete di
+              infrastrutture intelligenti per migliorare la sicurezza stradale e la fluidità del traffico.
+              Le aziende che sviluppano e/o testano auto autonome
+              includono Tesla, Audi, BMW, Ford, Google, General Motors, Volkswagen e Volvo.
+            </p>
+
+            <div class="videowrapper"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/tlThdr3O5Qo"
+                title="Full Self-Driving" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+
+            <h4>Medicina</h4>
+            <p>
+              L'IA nel settore della sanità può essere utilizzata in diversi modi per aiutare nella diagnosi
+              e nella ricerca medica.
+              I sistemi di IA possono essere addestrati per
+              riconoscere i segni di malattie specifiche, come il cancro, e aiutare i medici nella
+              <strong>diagnosi.</strong><br>
+              Inoltre, l'IA può essere utilizzata per analizzare grandi quantità di dati di ricerca medica e
+              individuare nuovi trattamenti e a sviluppare nuovi
+              farmaci.<br>
+              Inoltre l'IA può essere utilizzata per <strong>automatizzare</strong> alcune attività mediche come la
+              diagnosi
+              di malattie, la valutazione dei sintomi e la chirurgia.<br>
+            </p>
+
+            <h4>Produzione Industriale</h4>
+            <p>
+              L'IA nell'automazione industriale e nella produzione può essere utilizzata per migliorare
+              l'<strong>efficienza</strong>, la <strong>qualità</strong> e la <strong>redditività</strong> delle
+              operazioni
+              industriali.<br>
+              Uno dei modi in cui l'IA viene utilizzata nell'automazione industriale è attraverso i sistemi di
+              controllo automatizzato, come i sistemi per produzione e i sistemi di controllo
+              della qualità. Questi sistemi possono utilizzare tecniche di apprendimento automatico per adattare
+              i <strong>processi di produzione</strong> in base alle condizioni in tempo reale e ottimizzare
+              l'utilizzo
+              delle risorse.<br>
+              In generale, l'IA può aiutare a rendere le operazioni industriali più <strong>efficienti</strong>,
+              <strong>flessibili</strong>
+              e <strong>adattive</strong>, e a supportare la trasformazione verso la produzione ibrida e la
+              produzione
+              additiva.
+            </p>
+
+            <figure>
+              <img class="standardImage" src="./images/3d-robot-hand-background-ai-technology-side-view.jpg"
+                alt="mano robot">
+              <figcaption>Immagine da <a
+                  href="https://www.freepik.com/free-photo/3d-robot-hand-background-ai-technology-side-view_17850536.htm#query=artificial%20intelligence&position=5&from_view=keyword">rawpixel.com</a>
+                (Freepik)</figcaption>
+            </figure>
+
+            <h4>Fantasia</h4>
+            <p>
+              Uno degli sviluppi più recenti è l'utilizzo di tecniche di IA per generare immagini realistiche
+              di oggetti, animali e persone. Un curioso esempio è l'utilizzo di algoritmi di generazione di
+              immagini per creare immagini di <strong>gatti</strong>. Questi algoritmi utilizzano il <strong>deep
+                learning</strong> per
+              analizzare migliaia di immagini di gatti esistenti e "<strong>imparare</strong>" i tratti distintivi
+              di un gatto.
+              Queste informazioni vengono poi utilizzate per generare nuove immagini di gatti
+              che <strong>sembrano realistiche</strong>.
+            </p>
+            <form action="https://thiscatdoesnotexist.com/" target="_blank">
+              <button class="button1-pushable" role="button" action="https://www.craiyon.com/">
+                <span class="button1-shadow"></span>
+                <span class="button1-edge"></span>
+                <span class="button1-front text">
+                  ThisCatDoesNotExist.com
+                </span>
+              </button>
+            </form>
+
+            <h2>OpenAI</h2>
+            <p>
+              <a href="https://openai.com/" target="_blank"><img class="sideImage" src="/images/openai-logo.png"
+                  alt="OpenAI logo"></a>
+              <strong>OpenAI</strong> è una delle più famose un'organizzazioni sull'intelligenza artificiale, che ha
+              lo scopo di promuovere e sviluppare un'intelligenza artificiale amichevole in modo che l'umanità possa
+              trarne beneficio. È stata fondata da <strong>Elon Musk</strong> e <strong>Sam Altman</strong>.
+            </p>
+            <p>
+              Tra i progetti più importanti e famosi di questa compagnia possiamo trovare DALL·E 2 e ChatGPT.
+            </p>
+
+            <div class="row">
+              <div class="column compareBox doubleColumns">
+                <h4>DAll·E 2</h4>
+                <p>
+                  DALL·E 2 è un modello di linguaggio generativo sviluppato da OpenAI, che è stato presentato nel
+                  gennaio 2021.
+                  A differenza dei modelli di linguaggio tradizionali, che utilizzano un vocabolario limitato e una
+                  struttura di frasi predefinita, DALL·E è in grado di generare testo in base a una richiesta di
+                  immagini o
+                  descrizioni.
+                  <!--<br>-->
+                </p>
+                <p>Caratteristiche:</p>
+                <ul>
+                  <li>produce immagini in risoluzione massima di 1024 x 1024 pixel</li>
+                  <li>parte da un testo in linguaggio naturale.</li>
+                  <li>può generare immagini adeguandosi a vari stili come ad esempio la pixel art, lo stile cartoon,
+                    il
+                    rendering 3D.</li>
+                  <li>è capace di produrre immagini realistiche partendo da un testo</li>
+                </ul>
+                <p>
+                  DALL·E 2 è stato utilizzato per generare una varietà di contenuti, tra cui descrizioni di immagini,
+                  testi di storie e poesie, e persino ricette e istruzioni per la costruzione di oggetti.
+                </p>
+
+                <form action=" https://www.craiyon.com/" target="_blank">
+                  <button class="button3" role="button">Prova Crayon</button>
+                </form>
+              </div>
+              <div class="column compareBox doubleColumns">
+                <h4>ChatGPT</h4>
+                <p>
+                  ChatGPT è un prototipo di chatbot basato su intelligenza artificiale e machine learning
+                  sviluppato da OpenAI specializzato nella conversazione con un utente umano.<br>
+                  Il modello è stato allenato in modo ibrido utilizzando istruttori umani e valutazioni
+                  automatizzate per migliorare le sue prestazioni, in modo sia supervisionato e non.
+                  <!--<br>-->
+                </p>
+                <p>
+                  <strong>ChatGPT</strong> stato lanciato il 30 novembre 2022 e ha attirato l'attenzione per le sue
+                  risposte
+                  dettagliate e articolate.
+                  Questo modello ha la capacità di generare diversi tipi di contenuti, come:
+                </p>
+                <ul>
+                  <li>riassunti</li>
+                  <li>spiegazioni</li>
+                  <li>elenchi puntati</li>
+                  <li>ricette</li>
+                  <li>testi di canzoni</li>
+                  <li>poesie</li>
+                </ul>
+                <p>
+                  Può anche scrivere del codice in qualsiasi linguaggio di programmazione richiesto dall’utente e
+                  può inoltre tradurre un testo in qualsiasi lingua e dare un’interpretazione a un testo fornito
+                  in input rispiegandolo.
+                </p>
+
+                <form action=" https://chat.openai.com/chat" target="_blank">
+                  <button class="button3" role="button">Prova ChatGPT</button>
+                </form>
+              </div>
+      </section>
+
+      <figure>
+        <img class="standardImage" src="images/DALL-E-2-images.webp" alt="DALL-E 2 generated images">
+        <figcaption>Set di immagini generate da <a href="https://openai.com/dall-e-2/" target="_blank">DALL·E 2</a>.
+        </figcaption>
+      </figure>
+
+
+      <section class=" section4" id="section4">
+        <h2>Controversie e problemi dell'IA</h2>
+        <h4>Artisti</h4>
+        <p>
+          Dopo la diffusione di intelligenze artificiali capaci di <strong>generare</strong> una grande varietà di
+          contenuti artistici
+          in brevissimo tempo, molti creatori hanno <strong>protestato</strong> contro gli strumenti di generazione di
+          AI-art,
+          <!--<br>-->
+          considerandoli <strong>non etici</strong> in quanto vengono spesso addestrati utilizzando set di dati che
+          contengono opere
+          d'arte prelevate da Internet senza il <strong>consenso</strong> dell'artista.
+        </p>
+
+        <!--<blockquote class="twitter-tweet">
+          <p lang="en" dir="ltr">The creativity of artists protesting is so beautiful.<a
+              href="https://twitter.com/hashtag/AIart?src=hash&amp;ref_src=twsrc%5Etfw">#AIart</a> <a
+              href="https://twitter.com/hashtag/artstation?src=hash&amp;ref_src=twsrc%5Etfw">#artstation</a> <a
+              href="https://t.co/QKyyP0sder">pic.twitter.com/QKyyP0sder</a></p>&mdash; Joyce Da Silva (@joysilvart) <a
+            href="https://twitter.com/joysilvart/status/1603138150028775424?ref_src=twsrc%5Etfw">December 14, 2022</a>
+        </blockquote>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>-->
+
+        <a href="https://twitter.com/joysilvart/status/1603138150028775424" target="_blank"><img class="standardImage"
+            src="images/tweet-1.png" alt="tweet"></a>
+
+        <p>
+          I membri della comunità online di <strong>ArtStation</strong> hanno iniziato a denunciare pubblicamente
+          l'arte generata dall'intelligenza artificiale includendo immagini "No AI Art" nei loro portfolio.
+          Le immagini di protesta (sopra alcuni esempi creativi) hanno dominato per giorni la pagina di tendenza di
+          ArtStation.
+          <!--<br>-->
+          Le proteste sono diventate in breve tempo <strong>virali</strong> anche su diversi social network, primo fra
+          tutti la piattaforma <strong>Twitter</strong>.
+        </p>
+        <p>
+          Non solo gli artisti rischiano di vedersi sostituiti da modelli generativi di IA, ma anche i
+          <strong>programmatori</strong> temono questo scenario.
+        </p>
+        <h4>Programmatori</h4>
+        <p>
+          <a href="https://github.com/features/copilot" target="_blank"><img class="sideImage"
+              src="/images/github-copilot-logo.png" alt="GitHub Copilot logo"></a>
+          GitHub Copilot è uno strumento di intelligenza artificiale basato su cloud sviluppato da
+          <strong>GitHub</strong> e OpenAI per assistere gli utenti degli ambienti di sviluppo integrato
+          (<strong>IDE</strong>) mediante il completamento automatico del codice.
+        </p>
+        <p>
+          Tramite questo strumento è possibile generare in pochi secondi codice perfettamente funzionante a partire
+          da un input dato dall'utente sotto forma di commento.
+        </p>
+        <p>
+          Dopo l'annuncio di questo innovativo strumento, svariati programmatori si hanno avvertito il pericolo di
+          un'intelligenza migliore della loro e capace di scrivere in pochi secondi quello che a loro impiega giorni
+          di lavoro.
+        </p>
+        <p>
+          Per adesso l'IA non è ancora così evoluta da sostituire questo o altri tipi di lavoro, ma in un futuro
+          non molto lontano è possibile che l'intelligenza artificiale prenda il posto degli umani in diversi campi di
+          competenza.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="ocean">
+      <div class="textContent">
+        <p>Fatto da: <br>
+          <a href="https://twitter.com/MedianiSamuel">Samuel Mediani</a><br>
+          <a href="https://twitter.com/IlsolitoGrav">Davide Gravina</a><br>
+          <a href="https://youtu.be/dQw4w9WgXcQ">Asia Ugolotti</a> <!-- https://twitter.com/asiaugolottii -->
+          <br>
+        </p>
+      </div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+  </footer>
+</body>
+
+</html>
+<!-- https://youtu.be/dQw4w9WgXcQ -->
